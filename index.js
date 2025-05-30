@@ -22,12 +22,14 @@ const PORT = process.env.PORT || 5000;
 // middleware
 app.use(express.json());
 app.use(cookieParser());
-app.options("*", cors());
+app.use(express.urlencoded({ extended: true }));
 app.use(
-    cors({
-        origin: "https://edu-tech-hub.vercel.app/",
-        credentials: true,
-    })
+  cors({
+    origin: "*",
+    methods: ["POST", "GET"],
+    credentials: true,
+    optionSuccessStatus: 200,
+  })
 );
 app.use(
     fileUpload({
