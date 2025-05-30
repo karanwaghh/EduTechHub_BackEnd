@@ -22,9 +22,10 @@ const PORT = process.env.PORT || 5000;
 // middleware
 app.use(express.json());
 app.use(cookieParser());
+app.options("*", cors());
 app.use(
     cors({
-        origin: "*",
+        origin: "https://edu-tech-hub.vercel.app/",
         credentials: true,
     })
 );
